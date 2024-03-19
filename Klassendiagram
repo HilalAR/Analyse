@@ -1,0 +1,133 @@
+import java.util.List;
+
+public class Klant {
+    private String naam;
+    private String adres;
+    private String telefoonnummer;
+
+    public Klant(String naam, String adres, String telefoonnummer) {
+        this.naam = naam;
+        this.adres = adres;
+        this.telefoonnummer = telefoonnummer;
+    }
+
+    // Getters en setters
+}
+
+public class Transactie {
+    private int transactienummer;
+    private String naam;
+    private String tijd;
+    private String datum;
+    private String plaats;
+    private double btwTotaal;
+    private double totaal;
+    private String transactieType;
+    private Klant klant;
+
+    public Transactie(int transactienummer, String naam, String tijd, String datum, String plaats,
+                      double btwTotaal, double totaal, String transactieType, Klant klant) {
+        this.transactienummer = transactienummer;
+        this.naam = naam;
+        this.tijd = tijd;
+        this.datum = datum;
+        this.plaats = plaats;
+        this.btwTotaal = btwTotaal;
+        this.totaal = totaal;
+        this.transactieType = transactieType;
+        this.klant = klant;
+    }
+
+    // Getters en setters
+}
+
+public class TransactieRegel {
+    private int aantal;
+    private double regelTotaal;
+    private Product product;
+    private Transactie transactie;
+
+    public TransactieRegel(int aantal, double regelTotaal, Product product, Transactie transactie) {
+        this.aantal = aantal;
+        this.regelTotaal = regelTotaal;
+        this.product = product;
+        this.transactie = transactie;
+    }
+
+    // Getters en setters
+}
+
+public class VerhuurTransactie extends Transactie {
+    private double borgTotaal;
+    private double afrekenTotaal;
+
+    public VerhuurTransactie(int transactienummer, String naam, String tijd, String datum, String plaats,
+                              double btwTotaal, double totaal, String transactieType, Klant klant,
+                              double borgTotaal, double afrekenTotaal) {
+        super(transactienummer, naam, tijd, datum, plaats, btwTotaal, totaal, transactieType, klant);
+        this.borgTotaal = borgTotaal;
+        this.afrekenTotaal = afrekenTotaal;
+    }
+
+    // Getters en setters
+}
+
+public class Product {
+    private int productnummer;
+    private String omschrijving;
+    private double prijs;
+
+    public Product(int productnummer, String omschrijving, double prijs) {
+        this.productnummer = productnummer;
+        this.omschrijving = omschrijving;
+        this.prijs = prijs;
+    }
+
+    // Getters en setters
+}
+
+public class VerhuurProduct extends Product {
+    private double verhuurprijs;
+    private double borg;
+    private List<Exemplaar> alleVerhuurdeProducten;
+
+    public VerhuurProduct(int productnummer, String omschrijving, double prijs, double verhuurprijs, double borg,
+                          List<Exemplaar> alleVerhuurdeProducten) {
+        super(productnummer, omschrijving, prijs);
+        this.verhuurprijs = verhuurprijs;
+        this.borg = borg;
+        this.alleVerhuurdeProducten = alleVerhuurdeProducten;
+    }
+
+    // Getters en setters
+}
+
+public class Exemplaar {
+    private String aanschafDatum;
+    private String serieNr;
+    private String status;
+    private VerhuurRegel verhuurRegel;
+
+    public Exemplaar(String aanschafDatum, String serieNr, String status, VerhuurRegel verhuurRegel) {
+        this.aanschafDatum = aanschafDatum;
+        this.serieNr = serieNr;
+        this.status = status;
+        this.verhuurRegel = verhuurRegel;
+    }
+
+    // Getters en setters
+}
+
+public class VerhuurRegel extends TransactieRegel {
+    private String eindDatum;
+    private int aantalDagen;
+
+    public VerhuurRegel(int aantal, double regelTotaal, Product product, Transactie transactie,
+                        String eindDatum, int aantalDagen) {
+        super(aantal, regelTotaal, product, transactie);
+        this.eindDatum = eindDatum;
+        this.aantalDagen = aantalDagen;
+    }
+
+    // Getters en setters
+}
