@@ -1,0 +1,155 @@
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+// VerhuurProduct.java
+public class VerhuurProduct {
+    private String naam;
+    private double prijsPerDag;
+
+    public VerhuurProduct(String naam, double prijsPerDag) {
+        this.naam = naam;
+        this.prijsPerDag = prijsPerDag;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public double getPrijsPerDag() {
+        return prijsPerDag;
+    }
+
+    public void setPrijsPerDag(double prijsPerDag) {
+        this.prijsPerDag = prijsPerDag;
+    }
+}
+
+// Exemplaar.java
+public class Exemplaar {
+    private int exemplaarID;
+    private VerhuurProduct product;
+    private boolean verhuurd;
+
+    public Exemplaar(int exemplaarID, VerhuurProduct product) {
+        this.exemplaarID = exemplaarID;
+        this.product = product;
+        this.verhuurd = false;
+    }
+
+    public int getExemplaarID() {
+        return exemplaarID;
+    }
+
+    public void setExemplaarID(int exemplaarID) {
+        this.exemplaarID = exemplaarID;
+    }
+
+    public VerhuurProduct getProduct() {
+        return product;
+    }
+
+    public void setProduct(VerhuurProduct product) {
+        this.product = product;
+    }
+
+    public boolean isVerhuurd() {
+        return verhuurd;
+    }
+
+    public void setVerhuurd(boolean verhuurd) {
+        this.verhuurd = verhuurd;
+    }
+}
+
+// VerhuurRegel.java
+public class VerhuurRegel {
+    private Exemplaar exemplaar;
+    private int verhuurperiode;
+    private Date verhuurDatum;
+
+    public VerhuurRegel(Exemplaar exemplaar, int verhuurperiode, Date verhuurDatum) {
+        this.exemplaar = exemplaar;
+        this.verhuurperiode = verhuurperiode;
+        this.verhuurDatum = verhuurDatum;
+    }
+
+    public Exemplaar getExemplaar() {
+        return exemplaar;
+    }
+
+    public void setExemplaar(Exemplaar exemplaar) {
+        this.exemplaar = exemplaar;
+    }
+
+    public int getVerhuurperiode() {
+        return verhuurperiode;
+    }
+
+    public void setVerhuurperiode(int verhuurperiode) {
+        this.verhuurperiode = verhuurperiode;
+    }
+
+    public Date getVerhuurDatum() {
+        return verhuurDatum;
+    }
+
+    public void setVerhuurDatum(Date verhuurDatum) {
+        this.verhuurDatum = verhuurDatum;
+    }
+}
+
+// VerhurenController.java
+public class VerhurenController {
+    private static List<VerhuurProduct> beschikbareProducten = new ArrayList<>();
+    private static List<Exemplaar> beschikbareExemplaren = new ArrayList<>();
+    private static List<VerhuurRegel> verhuurTransacties = new ArrayList<>();
+
+    public static void geefAlle() {
+        // Implementatie om alle beschikbare producten op te halen
+    }
+
+    public static List<Exemplaar> geefBeschikbareExemplaren() {
+        // Implementatie om alle beschikbare exemplaren op te halen
+        return beschikbareExemplaren;
+    }
+
+    public static void verhuurExemplaar(Exemplaar exemplaar, int verhuurperiode, Date verhuurDatum) {
+        exemplaar.setVerhuurd(true);
+        VerhuurRegel regel = new VerhuurRegel(exemplaar, verhuurperiode, verhuurDatum);
+        verhuurTransacties.add(regel);
+    }
+}
+
+// MedewerkerVerhuur.java
+public class MedewerkerVerhuur {
+    public static void start() {
+        // Implementatie voor het starten van het verhuurproces
+    }
+
+    public static void selecteerProduct() {
+        // Implementatie voor het selecteren van een product om te verhuren
+    }
+
+    public static void geefDetails() {
+        // Implementatie voor het tonen van details van een product/exemplaar
+    }
+
+    public static boolean isVerhuurd(Exemplaar exemplaar) {
+        return exemplaar.isVerhuurd();
+    }
+
+    public static int geefPeriode() {
+        // Implementatie om de verhuurperiode op te halen
+        return 0;
+    }
+
+    public static Date geefDatum() {
+        // Implementatie om de verhuurdatum op te halen
+        return new Date();
+    }
+}
